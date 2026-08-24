@@ -447,7 +447,7 @@ nav {
 .project {
   position: relative;
   display: grid;
-  grid-template-columns: 8% 1fr minmax(310px, 38%) 45px;
+  grid-template-columns: 8% 1fr minmax(310px, 38%) 64px;
   gap: 2.5vw;
   align-items: center;
   min-height: 360px;
@@ -1158,7 +1158,6 @@ button {
   transform: translateZ(16px);
 }
 .inspect {
-  margin-top: 20px;
   padding: 0;
   border: 0;
   border-bottom: 1px solid var(--line);
@@ -1168,8 +1167,38 @@ button {
   letter-spacing: 0.13em;
   cursor: pointer;
 }
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-top: 22px;
+}
+.project-actions .live-site {
+  padding: 11px 14px;
+  background: var(--cyan);
+  border: 1px solid var(--cyan);
+  color: #03100d;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  transition: 0.2s;
+}
+.project-actions .live-site:hover {
+  background: transparent;
+  color: var(--cyan);
+}
+.source-link {
+  color: #91a5ad;
+  font-size: 8px;
+  letter-spacing: 0.13em;
+  border-bottom: 1px solid var(--line);
+}
 .project-arrow {
   display: block;
+  font-size: 8px;
+  letter-spacing: 0.11em;
+  white-space: nowrap;
 }
 .github-grid {
   position: relative;

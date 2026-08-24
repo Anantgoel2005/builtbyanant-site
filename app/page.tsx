@@ -606,9 +606,29 @@ export default function Home() {
                     <span key={x}>{x}</span>
                   ))}
                 </div>
-                <button className="inspect" onClick={() => setModal(p)}>
-                  INSPECT SYSTEM →
-                </button>
+                <div className="project-actions">
+                  {p.demo && (
+                    <a
+                      className="live-site"
+                      href={p.demo}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      OPEN LIVE SITE ↗
+                    </a>
+                  )}
+                  <button className="inspect" onClick={() => setModal(p)}>
+                    VIEW DETAILS →
+                  </button>
+                  <a
+                    className="source-link"
+                    href={p.href}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    SOURCE ↗
+                  </a>
+                </div>
               </div>
               <figure className="project-visual">
                 <Image
@@ -629,7 +649,7 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
               >
-                ↗
+                {p.demo ? "LIVE ↗" : "CODE ↗"}
               </a>
               <div className="project-scan" />
             </article>
