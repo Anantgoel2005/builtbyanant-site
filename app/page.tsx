@@ -128,6 +128,7 @@ const commands = [
   { label: "Open LinkedIn", hint: "External link", action: "linkedin" },
   { label: "Send a signal", hint: "Email Anant", action: "email" },
 ];
+const projectOrder = ["04", "03", "01", "02", "05"];
 function Magnetic({
   children,
   href,
@@ -181,7 +182,10 @@ export default function Home() {
     updated: "SYNCING",
   });
   const filtered = useMemo(
-      () => projects.filter((p) => filter === "All" || p.category === filter),
+      () =>
+        projects
+          .filter((p) => filter === "All" || p.category === filter)
+          .sort((a, b) => projectOrder.indexOf(a.id) - projectOrder.indexOf(b.id)),
       [filter],
     ),
     visibleCommands = commands.filter((c) =>
@@ -401,10 +405,10 @@ export default function Home() {
         </div>
         <div className="hero-title">
           <div className="line-mask">
-            <span className="hero-line">ENGINEERING</span>
+            <span className="hero-line">COMPUTER VISION</span>
           </div>
           <div className="line-mask offset">
-            <span className="hero-line outline">INTELLIGENT</span>
+            <span className="hero-line outline">&amp; SECURITY</span>
           </div>
           <div className="line-mask">
             <span className="hero-line">
@@ -427,9 +431,8 @@ export default function Home() {
         <div className="hero-footer intro-fade">
           <div className="hero-summary">
             <p>
-              I turn applied AI, computer vision, and security ideas into
-              dependable products—from the first experiment to the interface
-              people actually use.
+              I build computer-vision and security systems from inference pipeline
+              to tested operator interface.
             </p>
             <div className="hero-actions">
               <Magnetic href="#projects">VIEW SELECTED WORK ↓</Magnetic>
@@ -478,10 +481,11 @@ export default function Home() {
         </div>
       </section>
       <section className="manifesto reveal" id="about">
-        <div className="section-code">/ APPROACH</div>
+        <div className="section-code">/ ABOUT</div>
         <p>
-          I build complete workflows around models—not isolated demos.{" "}
-          <span>Understandable at the core. Useful at the edge.</span>
+          Anant Goel is a fourth-year B.Tech Computer Science student in India,
+          building computer-vision pipelines, security tools, and local-first
+          products. <span>Each project documents inputs, architecture, tests, and known limitations.</span>
         </p>
         <div className="metrics">
           <div>
@@ -615,8 +619,8 @@ export default function Home() {
                   >
                     {p.demo ? "OPEN LIVE SITE ↗" : "OPEN ON GITHUB ↗"}
                   </a>
-                  <button className="inspect" onClick={() => setModal(p)}>
-                    VIEW DETAILS →
+                  <button className="inspect" onClick={() => p.id === "04" ? (window.location.href = "/projects/pathwise") : setModal(p)}>
+                    {p.id === "04" ? "READ CASE STUDY →" : "VIEW DETAILS →"}
                   </button>
                   {p.demo && (
                     <a
@@ -667,37 +671,34 @@ export default function Home() {
       </section>
       <section className="github-grid reveal" id="telemetry">
         <div>
-          <span className="section-code">/ LIVE GITHUB TELEMETRY</span>
+          <span className="section-code">/ ENGINEERING EVIDENCE</span>
           <h2>
-            PUBLIC
+            PATHWISE
             <br />
-            ACTIVITY FEED
+            VALIDATION
           </h2>
           <p>
-            Current public repository signals, fetched directly from GitHub when
-            this page loads.
+            Deterministic scenario outputs from a six-second reference run.
+            These values describe the hazard-engine scenario, not model accuracy
+            or deployment latency.
           </p>
-          <span className="sync">● {github.updated}</span>
+          <a className="sync" href="/projects/pathwise">● READ CASE STUDY →</a>
         </div>
         <div className="stat-grid">
           <div>
-            <strong>{github.repos}</strong>
-            <span>PUBLIC REPOS</span>
+            <strong>540</strong>
+            <span>ACTOR SAMPLES</span>
           </div>
           <div>
-            <strong>{github.stars}</strong>
-            <span>TOTAL STARS</span>
+            <strong>2.03s</strong>
+            <span>MINIMUM TTC</span>
           </div>
           <div>
-            <strong>{github.events}</strong>
-            <span>RECENT EVENTS</span>
+            <strong>33</strong>
+            <span>CUT-IN FRAMES</span>
           </div>
-          <a
-            href="https://github.com/Anantgoel2005"
-            target="_blank"
-            rel="noreferrer"
-          >
-            OPEN PROFILE ↗
+          <a href="/projects/pathwise">
+            SEE CONTEXT →
           </a>
         </div>
       </section>
@@ -821,6 +822,7 @@ export default function Home() {
                 OPEN LIVE DEMO ↗
               </a>
             )}
+            {modal.id === "04" && <a href="/projects/pathwise">READ CASE STUDY →</a>}
             <a href={modal.href} target="_blank" rel="noreferrer">
               OPEN SOURCE ↗
             </a>
