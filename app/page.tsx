@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { animate, stagger } from "animejs";
+import Image from "next/image";
 type Project = {
   id: string;
   title: string;
@@ -14,6 +15,7 @@ type Project = {
   image: string;
   alt: string;
   detail: string;
+  outcome: string;
 };
 const projects: Project[] = [
   {
@@ -30,6 +32,7 @@ const projects: Project[] = [
     alt: "Deception Orchestrator live security telemetry dashboard",
     detail:
       "Signals become an evidence trail, enriched with ATT&CK context and presented through an operator-first investigation surface.",
+    outcome: "Evidence-first investigations with explicit scope and ATT&CK context.",
   },
   {
     id: "02",
@@ -45,6 +48,7 @@ const projects: Project[] = [
     alt: "Mouseion private offline library collection interface",
     detail:
       "A personal library treated as durable local data: fast search, calm reading workflows, and zero dependency on a remote account.",
+    outcome: "A private reading workflow that remains useful without an account or network.",
   },
   {
     id: "03",
@@ -60,6 +64,7 @@ const projects: Project[] = [
     alt: "Traffic Intelligence product overview and live monitoring dashboard",
     detail:
       "A complete perception loop joins detection, persistent tracks, event logic, storage, and a live operational view for traffic teams.",
+    outcome: "Turns road footage into trackable events and live operational telemetry.",
   },
   {
     id: "04",
@@ -75,6 +80,7 @@ const projects: Project[] = [
     alt: "Animated PathWise hazard-engine telemetry demonstration",
     detail:
       "Perspective-aware tracking converts road footage into interpretable motion and proximity signals for earlier hazard awareness.",
+    outcome: "Makes spatial risk understandable through bird’s-eye-view telemetry.",
   },
   {
     id: "05",
@@ -90,6 +96,7 @@ const projects: Project[] = [
     alt: "Pentest Agent scope, assess, verify, and report workflow",
     detail:
       "Every action stays inside declared scope. Findings require evidence, and reports remain reproducible enough for a human reviewer to trust.",
+    outcome: "Produces reproducible findings while keeping every action inside declared scope.",
   },
   {
     id: "06",
@@ -106,6 +113,7 @@ const projects: Project[] = [
     alt: "Internwise internship discovery and resume tailoring interface",
     detail:
       "A candidate-first workflow that connects opportunity discovery, explainable match scoring, GitHub-informed recommendations, and internship-specific resume generation.",
+    outcome: "Connects discovery, fit scoring, and tailored applications in one workflow.",
   },
 ];
 const commands = [
@@ -332,7 +340,7 @@ export default function Home() {
     if (a === "github") open("https://github.com/Anantgoel2005", "_blank");
     if (a === "linkedin")
       open("https://www.linkedin.com/in/ag25goel/", "_blank");
-    if (a === "email") location.href = "mailto:anantgoel2005@gmail.com";
+    if (a === "email") open("mailto:anantgoel2005@gmail.com", "_self");
   };
   const track = (e: React.PointerEvent<HTMLElement>) => {
     root.current?.style.setProperty("--mx", `${e.clientX}px`);
@@ -351,6 +359,9 @@ export default function Home() {
   };
   return (
     <main ref={root} onPointerMove={track}>
+      <a className="skip-link" href="#projects">
+        Skip to selected work
+      </a>
       <canvas ref={canvas} className="particle-field" aria-hidden="true" />
       <div className="cursor-glow" />
       <div className="custom-cursor">
@@ -370,7 +381,14 @@ export default function Home() {
           <span className="pulse" /> AVAILABLE FOR OPPORTUNITIES
         </div>
         <div className="nav-links">
-          <button onClick={() => setPalette(true)}>⌘K</button>
+          <button
+            onClick={() => setPalette(true)}
+            aria-label="Open navigation palette"
+            aria-expanded={palette}
+            aria-controls="command-palette"
+          >
+            ⌘K
+          </button>
           <a href="#projects">PROJECTS</a>
           <a href="#about">ABOUT</a>
           <a href="mailto:anantgoel2005@gmail.com">CONTACT ↗</a>
@@ -407,16 +425,29 @@ export default function Home() {
           </span>
         </div>
         <div className="hero-footer intro-fade">
-          <p>
-            Applied AI, computer vision, and security engineering—built end to
-            end, from experimental model to dependable product.
-          </p>
-          <Magnetic href="#projects" className="scroll-cue">
-            <span>ENTER THE SYSTEM</span>
-            <i>↓</i>
-          </Magnetic>
+          <div className="hero-summary">
+            <p>
+              I turn applied AI, computer vision, and security ideas into
+              dependable products—from the first experiment to the interface
+              people actually use.
+            </p>
+            <div className="hero-actions">
+              <Magnetic href="#projects">VIEW SELECTED WORK ↓</Magnetic>
+              <Magnetic href="mailto:anantgoel2005@gmail.com">START A CONVERSATION ↗</Magnetic>
+            </div>
+          </div>
+          <div className="hero-availability">
+            <span className="pulse" />
+            <span>OPEN TO INTERNSHIPS, RESEARCH &amp; COLLABORATION</span>
+          </div>
         </div>
         <div className="hero-index">A—01</div>
+      </section>
+      <section className="signal-strip" aria-label="Portfolio highlights">
+        <div><strong>06</strong><span>COMPLETE SYSTEMS</span></div>
+        <div><strong>03</strong><span>CORE PRACTICES</span></div>
+        <div><strong>LIVE</strong><span>DEPLOYED PRODUCTS</span></div>
+        <div><strong>INDIA</strong><span>AVAILABLE REMOTELY</span></div>
       </section>
       <section className="terminal reveal">
         <div className="terminal-top">
@@ -537,10 +568,11 @@ export default function Home() {
         </header>
         <div className="filters reveal">
           {["All", "Security", "Vision", "Product"].map((x) => (
-            <button
-              className={filter === x ? "active" : ""}
-              onClick={() => setFilter(x)}
-              key={x}
+              <button
+                className={filter === x ? "active" : ""}
+                onClick={() => setFilter(x)}
+                aria-pressed={filter === x}
+                key={x}
             >
               {x}
             </button>
@@ -568,6 +600,7 @@ export default function Home() {
                 <span className="project-type">{p.type}</span>
                 <h3>{p.title}</h3>
                 <p>{p.description}</p>
+                <p className="project-outcome"><span>OUTCOME</span>{p.outcome}</p>
                 <div className="project-stack">
                   {p.stack.map((x) => (
                     <span key={x}>{x}</span>
@@ -578,7 +611,12 @@ export default function Home() {
                 </button>
               </div>
               <figure className="project-visual">
-                <img src={p.image} alt={p.alt} loading="lazy" />
+                <Image
+                  src={p.image}
+                  alt={p.alt}
+                  fill
+                  sizes="(max-width: 760px) 100vw, 38vw"
+                />
                 <figcaption>
                   <span>LIVE ARTIFACT</span>
                   <span>VIEW / 0{p.id}</span>
@@ -694,7 +732,14 @@ export default function Home() {
       </footer>
       {palette && (
         <div className="overlay" onMouseDown={() => setPalette(false)}>
-          <div className="palette" onMouseDown={(e) => e.stopPropagation()}>
+          <div
+            className="palette"
+            id="command-palette"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigate portfolio"
+            onMouseDown={(e) => e.stopPropagation()}
+          >
             <div className="palette-input">
               <span>⌘</span>
               <input
@@ -722,6 +767,9 @@ export default function Home() {
         <div className="overlay" onMouseDown={() => setModal(null)}>
           <article
             className="project-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="project-modal-title"
             onMouseDown={(e) => e.stopPropagation()}
           >
             <button className="modal-close" onClick={() => setModal(null)}>
@@ -730,9 +778,19 @@ export default function Home() {
             <span className="section-code">
               / SYSTEM {modal.id} · {modal.accent}
             </span>
-            <img src={modal.image} alt="" />
-            <h2>{modal.title}</h2>
+            <Image
+              src={modal.image}
+              alt={modal.alt}
+              width={1200}
+              height={700}
+              sizes="(max-width: 900px) 94vw, 850px"
+            />
+            <h2 id="project-modal-title">{modal.title}</h2>
             <p>{modal.detail}</p>
+            <div className="modal-outcome">
+              <span>OUTCOME</span>
+              <p>{modal.outcome}</p>
+            </div>
             <div className="project-stack">
               {modal.stack.map((x) => (
                 <span key={x}>{x}</span>

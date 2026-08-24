@@ -25,6 +25,10 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: { card: "summary_large_image", title: "Anant Goel — Intelligent Systems Engineer", description: "Intelligent systems. Real-world impact.", images: ["/og.png"] },
+  keywords: ["Anant Goel", "applied AI", "computer vision", "security engineering", "full-stack systems"],
+  authors: [{ name: "Anant Goel", url: "https://builtbyanant.site" }],
+  alternates: { canonical: "/" },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
