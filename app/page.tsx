@@ -9,6 +9,7 @@ type Project = {
   description: string;
   stack: string[];
   href: string;
+  demo?: string;
   accent: string;
   image: string;
   alt: string;
@@ -89,6 +90,22 @@ const projects: Project[] = [
     alt: "Pentest Agent scope, assess, verify, and report workflow",
     detail:
       "Every action stays inside declared scope. Findings require evidence, and reports remain reproducible enough for a human reviewer to trust.",
+  },
+  {
+    id: "06",
+    title: "Internwise",
+    type: "Career Intelligence / Product",
+    category: "Product",
+    description:
+      "An internship and PSU opportunity scouter that scores role fit, recommends career preferences, and creates tailored resumes from a candidate’s profile and GitHub work.",
+    stack: ["TypeScript", "React", "Cloudflare", "D1"],
+    href: "https://github.com/Anantgoel2005/internwise",
+    demo: "https://internwise.builtbyanant.site",
+    accent: "LIVE",
+    image: "/projects/internwise.png",
+    alt: "Internwise internship discovery and resume tailoring interface",
+    detail:
+      "A candidate-first workflow that connects opportunity discovery, explainable match scoring, GitHub-informed recommendations, and internship-specific resume generation.",
   },
 ];
 const commands = [
@@ -569,8 +586,8 @@ export default function Home() {
               </figure>
               <a
                 className="project-arrow"
-                aria-label={`Open ${p.title} on GitHub`}
-                href={p.href}
+                aria-label={`Open ${p.title}${p.demo ? " live demo" : " on GitHub"}`}
+                href={p.demo ?? p.href}
                 target="_blank"
                 rel="noreferrer"
               >
@@ -721,6 +738,11 @@ export default function Home() {
                 <span key={x}>{x}</span>
               ))}
             </div>
+            {modal.demo && (
+              <a href={modal.demo} target="_blank" rel="noreferrer">
+                OPEN LIVE DEMO ↗
+              </a>
+            )}
             <a href={modal.href} target="_blank" rel="noreferrer">
               OPEN SOURCE ↗
             </a>
