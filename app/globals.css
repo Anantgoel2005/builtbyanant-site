@@ -1174,7 +1174,7 @@ button {
   gap: 14px;
   margin-top: 22px;
 }
-.project-actions .live-site {
+.project-actions .primary-project-link {
   padding: 11px 14px;
   background: var(--cyan);
   border: 1px solid var(--cyan);
@@ -1184,7 +1184,7 @@ button {
   letter-spacing: 0.11em;
   transition: 0.2s;
 }
-.project-actions .live-site:hover {
+.project-actions .primary-project-link:hover {
   background: transparent;
   color: var(--cyan);
 }

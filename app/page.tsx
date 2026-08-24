@@ -607,27 +607,27 @@ export default function Home() {
                   ))}
                 </div>
                 <div className="project-actions">
-                  {p.demo && (
-                    <a
-                      className="live-site"
-                      href={p.demo}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      OPEN LIVE SITE ↗
-                    </a>
-                  )}
-                  <button className="inspect" onClick={() => setModal(p)}>
-                    VIEW DETAILS →
-                  </button>
                   <a
-                    className="source-link"
-                    href={p.href}
+                    className="primary-project-link"
+                    href={p.demo ?? p.href}
                     target="_blank"
                     rel="noreferrer"
                   >
-                    SOURCE ↗
+                    {p.demo ? "OPEN LIVE SITE ↗" : "OPEN ON GITHUB ↗"}
                   </a>
+                  <button className="inspect" onClick={() => setModal(p)}>
+                    VIEW DETAILS →
+                  </button>
+                  {p.demo && (
+                    <a
+                      className="source-link"
+                      href={p.href}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      SOURCE ↗
+                    </a>
+                  )}
                 </div>
               </div>
               <figure className="project-visual">
