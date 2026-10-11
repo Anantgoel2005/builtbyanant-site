@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://builtbyanant.site"),
   title: "Anant Goel — Computer Vision & Systems Engineer",
-  description: "Computer-vision pipelines, security tools, and local-first products built by Anant Goel.",
+  description: "Anant Goel’s engineering portfolio and résumé: Python, computer vision, security tooling, and full-stack applications. Open to internships and early-career roles.",
   openGraph: {
     title: "Anant Goel — Computer Vision & Systems Engineer",
     description: "Computer-vision pipelines, security tools, and local-first products.",

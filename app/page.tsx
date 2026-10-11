@@ -1,19 +1,74 @@
 "use client";
+
 import Image from "next/image";
-import Link from "next/link";
-import { useMemo, useState } from "react";
-type Project={id:string;title:string;category:"Computer vision"|"Security"|"Product";type:string;description:string;stack:string[];image:string;alt:string;href:string;result?:string;caseStudy?:string};
-const projects:Project[]=[
-{id:"01",title:"PathWise",category:"Computer vision",type:"Road-risk perception prototype",description:"Projects persistent vehicle tracks through a calibrated homography, then uses relative motion for explainable TTC and cut-in warnings.",stack:["Python","YOLO","ByteTrack","OpenCV"],image:"/projects/pathwise-demo.gif",alt:"PathWise road-risk telemetry processing a traffic video",href:"https://github.com/Anantgoel2005/PathWise",result:"540 actor samples in a deterministic six-second reference scenario.",caseStudy:"/projects/pathwise"},
-{id:"02",title:"Traffic Intelligence",category:"Computer vision",type:"Detection, tracking, and telemetry",description:"A complete traffic analytics workflow: road activity detection, persistent tracking, incident recording, and an operational dashboard.",stack:["Python","YOLO","ByteTrack","React"],image:"/projects/traffic-overview.jpg",alt:"Traffic Intelligence monitoring dashboard",href:"https://github.com/Anantgoel2005/traffic_monitoring_system"},
-{id:"03",title:"Deception Orchestrator",category:"Security",type:"Defensive security console",description:"A self-hostable SOC analyst console that turns honeypot and URL-canary events into MITRE ATT&CK-tagged investigations.",stack:["Python","FastAPI","Next.js","Docker"],image:"/projects/deception.png",alt:"Deception Orchestrator security telemetry dashboard",href:"https://github.com/Anantgoel2005/deception-orchestrator"},
-{id:"04",title:"Mouseion",category:"Product",type:"Local-first desktop application",description:"A private offline library for PDF and EPUB collections with reading progress, metadata, favorites, and no cloud dependency.",stack:["TypeScript","React","Electron","Vite"],image:"/projects/mouseion-library.png",alt:"Mouseion private offline library interface",href:"https://github.com/Anantgoel2005/Mouseion"},
-{id:"05",title:"Pentest Agent",category:"Security",type:"Scoped assessment tooling",description:"A safety-oriented web assessment tool with explicit scope controls, evidence-first verification, and deterministic reporting.",stack:["Python","HTTPX","Click","CI/CD"],image:"/projects/pentest.svg",alt:"Pentest Agent scope and reporting workflow",href:"https://github.com/Anantgoel2005/pentest-agent"}];
-const filters=["All","Computer vision","Security","Product"] as const;
-export default function Home(){const[filter,setFilter]=useState<(typeof filters)[number]>("All");const visible=useMemo(()=>projects.filter(p=>filter==="All"||p.category===filter),[filter]);return <main>
-<nav className="site-nav" aria-label="Primary navigation"><Link className="wordmark" href="#top">ANANT GOEL<span>.</span></Link><div className="nav-items"><a href="#work">Work</a><a href="#about">About</a><a href="mailto:anantgoel2005@gmail.com">Contact</a></div></nav>
-<header className="intro" id="top"><p className="eyebrow">COMPUTER VISION · SECURITY · SYSTEMS</p><h1>I build clear, dependable systems around complex data.</h1><p className="intro-copy">Fourth-year B.Tech Computer Science student based in India. My recent work spans road-risk perception, defensive security tooling, and local-first products.</p><div className="intro-actions"><a className="button button-primary" href="#work">View selected work</a><a className="button" href="https://github.com/Anantgoel2005" target="_blank" rel="noreferrer">GitHub ↗</a><a className="button" href="https://www.linkedin.com/in/ag25goel/" target="_blank" rel="noreferrer">LinkedIn ↗</a></div></header>
-<section className="featured" aria-labelledby="featured-title"><div className="section-label">01 / FEATURED PROJECT</div><div className="featured-grid"><div><p className="project-category">COMPUTER VISION / SAFETY</p><h2 id="featured-title">PathWise</h2><p>Persistent tracks, calibrated road-plane geometry, and transparent TTC and cut-in rules for a reviewable road-risk pipeline.</p><dl className="evidence-list"><div><dt>540</dt><dd>actor samples</dd></div><div><dt>2.033s</dt><dd>minimum TTC</dd></div><div><dt>33</dt><dd>cut-in frames</dd></div></dl><p className="fine-print">Deterministic six-second scenario outputs - not detector accuracy or deployment-latency claims.</p><div className="project-links"><Link href="/projects/pathwise">Read case study →</Link><a href="https://github.com/Anantgoel2005/PathWise" target="_blank" rel="noreferrer">View source ↗</a></div></div><Link className="featured-image" href="/projects/pathwise" aria-label="Read the PathWise case study"><Image src="/projects/pathwise-demo.gif" alt="PathWise risk telemetry over road footage" fill priority sizes="(max-width: 800px) 100vw, 50vw" /></Link></div></section>
-<section className="work" id="work" aria-labelledby="work-title"><div className="work-heading"><div><p className="section-label">02 / SELECTED WORK</p><h2 id="work-title">Projects</h2></div><p>Click through only when you want the evidence.</p></div><div className="filters" aria-label="Filter projects">{filters.map(item=><button type="button" key={item} className={filter===item?"is-active":""} onClick={()=>setFilter(item)}>{item}</button>)}</div><div className="project-grid">{visible.map(project=><article className="project-card" key={project.id}><div className="card-image"><Image src={project.image} alt={project.alt} fill sizes="(max-width: 760px) 100vw, 50vw" /></div><div className="card-content"><p className="project-category">{project.category} · {project.type}</p><h3>{project.title}</h3><p>{project.description}</p>{project.result&&<p className="card-result">{project.result}</p>}<ul>{project.stack.map(item=><li key={item}>{item}</li>)}</ul><div className="project-links">{project.caseStudy&&<Link href={project.caseStudy}>Read case study →</Link>}<a href={project.href} target="_blank" rel="noreferrer">View source ↗</a></div></div></article>)}</div></section>
-<section className="about" id="about"><div><p className="section-label">03 / ABOUT</p><h2>Engineering that can be inspected.</h2></div><div><p>I focus on complete workflows: input and data handling, decision logic, APIs, telemetry, testing, and the interface that makes a system useful to a person.</p><p>I am seeking internships, research, and early-career software roles in computer vision, Python systems, and security engineering.</p><a className="text-link" href="mailto:anantgoel2005@gmail.com">Start a conversation →</a></div></section>
-<footer><span>© 2026 Anant Goel</span><div><a href="https://github.com/Anantgoel2005" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/ag25goel/" target="_blank" rel="noreferrer">LinkedIn</a><a href="mailto:anantgoel2005@gmail.com">Email</a></div></footer></main>}
+import { useState } from "react";
+
+const projects = [
+  { title: "PathWise", category: "Computer vision", description: "A road-risk prototype that turns vehicle tracks into explainable time-to-collision and cut-in warnings.", highlights: ["Designed the risk pipeline with calibrated road-plane projection and relative-motion logic.", "Integrated telemetry and a dashboard; validated the core rules with reproducible scenario tests."], stack: ["Python", "YOLO", "ByteTrack", "OpenCV"], image: "/projects/pathwise-demo.gif", alt: "PathWise demo showing tracked vehicles and a cut-in warning", href: "https://github.com/Anantgoel2005/PathWise" },
+  { title: "Traffic Intelligence", category: "Computer vision", description: "A traffic analytics workflow connecting video perception to an operational dashboard.", highlights: ["Combines road-activity detection, persistent tracking, and incident recording.", "Surfaces traffic telemetry in a React dashboard."], stack: ["Python", "YOLO", "ByteTrack", "React"], image: "/projects/traffic-overview.jpg", alt: "Traffic Intelligence dashboard with tracking and incident telemetry", href: "https://github.com/Anantgoel2005/traffic_monitoring_system" },
+  { title: "Deception Orchestrator", category: "Security", description: "A self-hostable analyst console for investigating honeypot and URL-canary activity.", highlights: ["Turns security events into investigations tagged with MITRE ATT&CK techniques.", "Connects a Python API to a Next.js console with Docker deployment."], stack: ["Python", "FastAPI", "Next.js", "Docker"], image: "/projects/deception.png", alt: "Deception Orchestrator console with honeypot events and investigations", href: "https://github.com/Anantgoel2005/deception-orchestrator" },
+  { title: "Mouseion", category: "Product", description: "A private desktop library for PDF and EPUB collections, built to work offline.", highlights: ["Brings metadata, favorites, and reading progress into one library interface.", "Packages a React and TypeScript application with Electron, without a cloud dependency."], stack: ["TypeScript", "React", "Electron", "Vite"], image: "/projects/mouseion-library.png", alt: "Mouseion desktop library with books and collection navigation", href: "https://github.com/Anantgoel2005/Mouseion" },
+  { title: "Pentest Agent", category: "Security", description: "A scoped web-assessment tool with a structured verification and reporting workflow.", highlights: ["Uses explicit scope controls for authorized assessments.", "Prioritizes evidence-first verification and deterministic reports."], stack: ["Python", "HTTPX", "Click", "CI/CD"], image: "/projects/pentest.svg", alt: "Pentest Agent workflow: scope, assess, verify, and report", href: "https://github.com/Anantgoel2005/pentest-agent" },
+];
+const capabilities = [
+  { title: "Computer vision", description: "Video detection and tracking, calibrated geometry, and explainable risk signals.", tools: "Python · OpenCV · YOLO · ByteTrack", proof: "PathWise / Traffic Intelligence" },
+  { title: "Security & backend", description: "Security telemetry, investigation workflows, scoped assessment tooling, and APIs.", tools: "Python · FastAPI · HTTPX · Docker", proof: "Deception Orchestrator / Pentest Agent" },
+  { title: "Interfaces & products", description: "Web dashboards and desktop applications that make complex workflows usable.", tools: "TypeScript · React · Next.js · Electron", proof: "Mouseion / Deception Orchestrator" },
+];
+const filters = ["All", "Computer vision", "Security", "Product"] as const;
+const github = "https://github.com/Anantgoel2005";
+const linkedin = "https://www.linkedin.com/in/ag25goel/";
+const email = "anantgoel2005@gmail.com";
+
+export default function Home() {
+  const [filter, setFilter] = useState<(typeof filters)[number]>("All");
+  const visibleCount = projects.filter(project => filter === "All" || project.category === filter).length;
+  return <>
+    <a className="skip-link" href="#main">Skip to content</a>
+    <nav className="site-nav" aria-label="Primary navigation">
+      <a className="wordmark" href="#top">ANANT GOEL<span>.</span></a>
+      <div className="nav-items"><a href="#skills">Skills</a><a href="#work">Projects</a><a href="#contact">Contact</a></div>
+    </nav>
+    <main id="main">
+      <header className="intro" id="top">
+        <p className="eyebrow">COMPUTER VISION · PYTHON · SOFTWARE ENGINEERING</p>
+        <h1>I turn complex data into useful software.</h1>
+        <p className="intro-copy">I’m Anant, a fourth-year B.Tech Computer Science student in India. I build computer vision pipelines, security tools, and local-first applications—from the processing logic to the interface.</p>
+        <p className="availability"><span aria-hidden="true" />Seeking internships & early-career engineering roles</p>
+        <div className="intro-actions">
+          <a className="button button-primary" href="#work">Explore projects <span aria-hidden="true">↓</span></a>
+          <button className="button" type="button" onClick={() => window.print()}>Print / save résumé</button>
+          <a className="button" href={`mailto:${email}`}>Contact me <span aria-hidden="true">↗</span></a>
+        </div>
+        <div className="profile-links"><a href={github} target="_blank" rel="noreferrer">GitHub ↗</a><a href={linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a></div>
+        <div className="print-contact">{email} · builtbyanant.site<br />github.com/Anantgoel2005 · linkedin.com/in/ag25goel</div>
+      </header>
+      <section className="skills section" id="skills" aria-labelledby="skills-title">
+        <p className="section-label">01 / SKILLS</p><h2 id="skills-title">What I can build.</h2>
+        <div className="skills-grid">{capabilities.map(skill => <article className="skill" key={skill.title}><h3>{skill.title}</h3><p>{skill.description}</p><p className="skill-tools">{skill.tools}</p><p className="skill-proof">In practice: {skill.proof}</p></article>)}</div>
+      </section>
+      <section className="work section" id="work" aria-labelledby="work-title">
+        <div className="work-heading"><div><p className="section-label">02 / SELECTED PROJECTS</p><h2 id="work-title">Built from end to end.</h2></div><p>Explore the projects behind my skills. Each repository includes the code and documentation.</p></div>
+        <div className="filters" role="group" aria-label="Filter projects">{filters.map(item => <button type="button" key={item} aria-pressed={filter === item} className={filter === item ? "is-active" : ""} onClick={() => setFilter(item)}>{item}</button>)}</div>
+        <p className="sr-only" role="status">{visibleCount} {visibleCount === 1 ? "project" : "projects"} shown</p>
+        <div className={`project-grid${filter === "All" ? " all-projects" : filter === "Product" ? " single-project" : ""}`}>{projects.map(project => <article className={`project-card${filter !== "All" && project.category !== filter ? " is-filtered" : ""}`} key={project.title}>
+          <a className="card-image" href={project.href} target="_blank" rel="noreferrer" aria-label={`View ${project.title} on GitHub`}><Image src={project.image} alt={project.alt} fill sizes="(max-width: 760px) 100vw, 50vw" unoptimized={project.image.endsWith(".gif")} /></a>
+          <div className="card-content"><p className="project-category">{project.category}</p><h3>{project.title}</h3><p>{project.description}</p>
+            <ul className="project-highlights">{project.highlights.map(highlight => <li key={highlight}>{highlight}</li>)}</ul>
+            <ul className="stack" aria-label={`${project.title} technologies`}>{project.stack.map(tool => <li key={tool}>{tool}</li>)}</ul>
+            <a className="text-link" href={project.href} target="_blank" rel="noreferrer" aria-label={`View ${project.title} source on GitHub`}>View source <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>)}</div>
+      </section>
+      <section className="about section" id="about" aria-labelledby="about-title">
+        <div><p className="section-label">03 / BACKGROUND</p><h2 id="about-title">The whole workflow matters.</h2></div>
+        <div><p>I focus on the pieces that turn an idea into a usable system: data handling, decision logic, APIs, telemetry, testing, and the interface people use.</p><dl className="background-details"><div><dt>Education</dt><dd>B.Tech in Computer Science · Fourth year</dd></div><div><dt>Based in</dt><dd>India</dd></div><div><dt>Looking for</dt><dd>Internships, research opportunities, and early-career roles in computer vision, Python systems, and security engineering.</dd></div></dl></div>
+      </section>
+      <section className="contact section" id="contact" aria-labelledby="contact-title">
+        <div><p className="section-label">04 / CONTACT</p><h2 id="contact-title">Let’s build something useful.</h2><p>Have a role or a project that fits? I’d like to hear about it.</p></div>
+        <div className="contact-links"><a className="contact-email" href={`mailto:${email}`}>{email} <span aria-hidden="true">↗</span></a><div><a href={github} target="_blank" rel="noreferrer">GitHub ↗</a><a href={linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a></div></div>
+      </section>
+    </main>
+    <footer><span>© {new Date().getFullYear()} Anant Goel</span><a href="#top">Back to top ↑</a></footer>
+  </>;
+}
