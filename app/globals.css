@@ -139,3 +139,35 @@ footer { display: flex; justify-content: space-between; padding: 28px clamp(20px
 
 .single-project .project-card:not(.is-filtered) { grid-column: 1 / -1; }
 
+
+/* Motion enhances visible content; nothing depends on animation to become readable. */
+@keyframes gentle-arrival {
+  from { opacity: .55; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media screen and (prefers-reduced-motion: no-preference) {
+  .intro > :not(.print-contact) { animation: gentle-arrival 480ms cubic-bezier(.22, 1, .36, 1) backwards; }
+  .intro h1 { animation-delay: 40ms; }
+  .intro-copy { animation-delay: 80ms; }
+  .availability { animation-delay: 120ms; }
+  .intro-actions { animation-delay: 160ms; }
+  .profile-links { animation-delay: 200ms; }
+  [data-reveal].is-revealed { animation: gentle-arrival 480ms cubic-bezier(.22, 1, .36, 1); }
+  .button, .filters button { transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, transform 180ms ease; }
+  .project-card { transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease; }
+  .nav-items a, .profile-links a, .text-link, footer a { transition: color 180ms ease; }
+  .button span, .text-link span { display: inline-block; transition: transform 180ms ease; }
+  @media (hover: hover) and (pointer: fine) {
+    .button:hover { transform: translateY(-2px); }
+    .project-card:hover { border-color: #a6b5a9; box-shadow: 0 8px 24px rgb(20 33 30 / 5%); transform: translateY(-3px); }
+    .text-link:hover span { transform: translate(2px, -2px); }
+  }
+  .button:active { transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce), print {
+  .intro > *, [data-reveal], .button, .filters button, .project-card, .card-image img, .text-link span {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
