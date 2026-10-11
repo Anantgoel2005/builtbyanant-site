@@ -26,3 +26,12 @@ npm start
 - Responsive CSS
 
 Project screenshots and demonstrations are sourced from their respective repositories.
+
+## Résumé view
+
+The homepage presents skills, project contributions, education, and contact details.
+Use **Print / save résumé** to open the browser print dialog and save an A4 PDF.
+The print layout includes all projects regardless of the selected on-screen filter,
+and omits screenshots, navigation, and buttons. Disable browser headers and footers
+for a clean export. Project details live in `app/page.tsx`; layout and print styles
+live in `app/globals.css`.
