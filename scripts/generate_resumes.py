@@ -83,7 +83,7 @@ PROJECTS = {
 
 VARIANTS = [
     ("Anant_Goel_IoT_Robotics_Intern_Resume.pdf", "IoT / Robotics Software Intern", ["warehouse", "speednet", "pathwise"],
-     "Final-year Computer Science student building software for connected devices and perception workflows. Project experience spans RFID inventory APIs, sensor telemetry, fog-edge simulation, vehicle tracking, and explainable road-risk logic.",
+     "Final-year Computer Science student with an electronics and IoT internship. Building connected-device APIs, sensor telemetry, fog-edge simulations, and perception workflows.",
      [("Languages", "Python, JavaScript, TypeScript"), ("IoT software", "Device REST APIs, RFID workflows, sensor logging, SQLite"), ("Perception & simulation", "OpenCV, YOLO, ByteTrack, calibrated geometry, virtual sensor nodes"), ("Tools", "Node.js, Express, Flask, Git, automated tests")]),
     ("Anant_Goel_Software_Engineering_Resume.pdf", "Software Engineering | Computer Vision & Python Systems", ["pathwise", "deception", "mouseion"],
      "Final-year Computer Science student building complete workflows around computer vision, defensive security, and local-first products. Focused on data handling, APIs, testing, telemetry, and usable interfaces.",
@@ -120,6 +120,16 @@ def project_block(key):
     return KeepTogether(block)
 
 
+def experience_block():
+    return KeepTogether([
+        paragraph("WORK EXPERIENCE", "section"),
+        paragraph("<b>Intern | Bodycast Innovators Pvt. Ltd.</b> | May - July 2025"),
+        paragraph("Dwarka, Delhi, India | On-site", "contact"),
+        paragraph("- Assisted across multiple projects while developing practical familiarity with power electronics, IoT, and microcontrollers.", "bullet"),
+        paragraph("- Gained exposure to PCB design, consumer electronics, and electrical engineering through the internship.", "bullet"),
+    ])
+
+
 def generate_master():
     path = OUTPUT / "Anant_Goel_Master_Resume.pdf"
     doc = SimpleDocTemplate(str(path), pagesize=A4, rightMargin=44, leftMargin=44,
@@ -133,8 +143,7 @@ def generate_master():
             paragraph("Final-year Computer Science student building complete software workflows across computer vision, security, connected-device services, and offline products. Experience includes a two-month industry internship and project work spanning APIs, data pipelines, explainable decision logic, dashboards, and reproducible validation."),
             paragraph("EDUCATION", "section"),
             paragraph("<b>BML Munjal University</b> | B.Tech in Computer Science | Expected May 2027"),
-            paragraph("WORK EXPERIENCE", "section"),
-            paragraph("<b>Bodycast Innovators Pvt. Ltd.</b> | Internship | 2 months"),
+            experience_block(),
             paragraph("TECHNICAL SKILLS", "section")]
     skills = [
         ("Languages", "Python, JavaScript, TypeScript, SQL"),
@@ -159,7 +168,7 @@ def generate_master():
     doc.build(flow, onFirstPage=footer, onLaterPages=footer)
     reader = PdfReader(path)
     text = "\n".join(page.extract_text() for page in reader.pages)
-    for required in ("Bodycast Innovators", "May 2027", *(project[0] for project in PROJECTS.values())):
+    for required in ("Bodycast Innovators", "May - July 2025", "microcontrollers", "May 2027", *(project[0] for project in PROJECTS.values())):
         if required not in text:
             raise ValueError(f"Missing {required} in master resume")
     if len(reader.pages) != 3:
@@ -184,9 +193,26 @@ def generate(selected=None):
                 paragraph("TECHNICAL SKILLS", "section")]
         for label, value in skills:
             flow.append(paragraph(f"<b>{escape(label)}:</b> {escape(value)}"))
+        if filename == "Anant_Goel_IoT_Robotics_Intern_Resume.pdf":
+            flow.append(experience_block())
         flow.append(paragraph("SELECTED PROJECTS", "section"))
         for key in keys:
             title, repo, stack, bullets = PROJECTS[key]
+            if filename == "Anant_Goel_IoT_Robotics_Intern_Resume.pdf":
+                bullets = {
+                    "warehouse": [
+                        "Built REST APIs for RFID registration, tag assignment, checkout, and environmental sensor telemetry, with SQLite audit logs and a dashboard.",
+                        "Designed device integration for ESP32, RC522, DHT22, and MQ sensors; the public repository contains the server and dashboard.",
+                    ],
+                    "speednet": [
+                        "Built a Flask fog-layer API and deterministic virtual sensor nodes for explainable weather- and traffic-based speed advisories.",
+                        "Added validated JSON ingestion, stale-node expiry, thread-safe state, a live dashboard, and automated tests; inputs are simulated.",
+                    ],
+                    "pathwise": [
+                        "Built vehicle tracking, calibrated road-plane projection, and explainable time-to-collision and cut-in rules using YOLO, ByteTrack, and OpenCV.",
+                        "Validated core risk logic with a reproducible 180-frame synthetic scenario, covering 540 actor samples.",
+                    ],
+                }[key]
             block = [paragraph(f'<link href="https://github.com/Anantgoel2005/{repo}">{escape(title)}</link> <font name="Helvetica" size="9">| {escape(stack)}</font>', "project")]
             block.extend(paragraph("- " + escape(bullet), "bullet") for bullet in bullets)
             block.append(Spacer(1, 7))
@@ -199,6 +225,10 @@ def generate(selected=None):
         for required in ("BML Munjal University", "May 2027", "Anant", "India"):
             if required not in text:
                 raise ValueError(f"Missing {required} in {filename}")
+        if filename == "Anant_Goel_IoT_Robotics_Intern_Resume.pdf":
+            for required in ("Bodycast Innovators", "May - July 2025", "microcontrollers", "PCB design"):
+                if required not in text:
+                    raise ValueError(f"Missing internship fact {required} in {filename}")
         print(f"{filename}: one page; {len(reader.pages[0].get('/Annots', []))} clickable links")
 
 if __name__ == "__main__":

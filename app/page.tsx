@@ -24,6 +24,7 @@ const resumes = {
   vision: "/resume/Anant_Goel_Computer_Vision_Intern_Resume.pdf",
   security: "/resume/Anant_Goel_Security_Engineering_Intern_Resume.pdf",
   iot: "/resume/Anant_Goel_IoT_Robotics_Intern_Resume.pdf",
+  master: "/resume/Anant_Goel_Master_Resume.pdf",
 };
 const evidence = [
   { label: "Scenario metrics", path: "/blob/main/docs/demo-metrics.json", note: "Synthetic reference scenario: 180 frames, 540 actor samples. These validate the demo rules, not real-world perception accuracy." },
@@ -80,6 +81,7 @@ export default function Home() {
           <a className="button" href={contactHref}>Discuss an internship <span aria-hidden="true">↗</span></a>
         </div>
         <div className="resume-variants" id="resume"><span>Focused résumés:</span><a href={resumes.vision} download>Computer vision (PDF)</a><a href={resumes.security} download>Security engineering (PDF)</a><a href={resumes.iot} download>IoT / Robotics (PDF)</a></div>
+        <div className="resume-variants"><a href={resumes.master} download>Master résumé · Projects &amp; experience (3-page PDF)</a></div>
         <div className="profile-links"><a href={github} target="_blank" rel="noreferrer">GitHub ↗</a><a href={linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a><button type="button" onClick={() => window.print()}>Print this page</button></div>
         <div className="print-contact">{email} · builtbyanant.site<br />github.com/Anantgoel2005 · linkedin.com/in/ag25goel</div>
       </header>

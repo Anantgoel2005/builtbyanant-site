@@ -39,10 +39,9 @@ for a clean export. Project details live in `app/page.tsx`; layout and print sty
 live in `app/globals.css`.
 
 The downloadable PDFs are committed in `public/resume/`: software engineering,
-computer vision, security engineering, and IoT/robotics software. The generator
-also supports a three-page master with 12 selected projects; its internship entry
-currently contains only the employer and two-month duration supplied by the owner.
-Confirm the remaining experience details before publishing the master. To regenerate:
+computer vision, security engineering, IoT/robotics software, and a three-page
+master with 12 selected projects. The IoT and master versions include the Bodycast
+internship, based on the owner's LinkedIn screenshots (May-July 2025). To regenerate:
 
 ```bash
 python -m pip install reportlab pypdf
