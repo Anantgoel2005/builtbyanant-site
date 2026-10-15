@@ -1,0 +1,2 @@
+# Preserve PDF byte offsets and cross-reference tables on every platform.
+*.pdf binary
