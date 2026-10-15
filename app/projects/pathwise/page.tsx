@@ -5,6 +5,14 @@ export const metadata: Metadata = {
   title: "PathWise Case Study | Anant Goel",
   description:
     "A transparent road-risk pipeline using persistent tracking, calibrated geometry, and deterministic TTC validation.",
+  alternates: { canonical: "/projects/pathwise" },
+  openGraph: {
+    title: "PathWise | Computer Vision Project by Anant Goel",
+    description: "Calibrated road geometry, persistent vehicle tracking, and reproducible risk-signal validation.",
+    url: "https://builtbyanant.site/projects/pathwise",
+    type: "article",
+    images: [{ url: "/projects/pathwise-demo.gif", alt: "PathWise synthetic risk-telemetry demonstration" }],
+  },
 };
 
 const metrics = [

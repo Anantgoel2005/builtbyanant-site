@@ -15,10 +15,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://builtbyanant.site"),
   title: "Anant Goel — Computer Vision & Systems Engineer",
-  description: "Anant Goel’s engineering portfolio and résumé: Python, computer vision, security tooling, and full-stack applications. Open to internships and early-career roles.",
+  description: "Anant Goel, BML Munjal University CSE student graduating May 2027. Computer vision, Python and security projects. Open to internships in India. View résumé.",
   openGraph: {
     title: "Anant Goel — Computer Vision & Systems Engineer",
-    description: "Computer-vision pipelines, security tools, and local-first products.",
+    description: "BML Munjal University CSE student, graduating May 2027. Computer vision, Python and security projects. Open to on-site or hybrid internships in India.",
     url: "https://builtbyanant.site",
     siteName: "Anant Goel",
     images: [{ url: "/og.png", width: 1733, height: 907, alt: "Anant Goel — Intelligent systems, real-world impact." }],

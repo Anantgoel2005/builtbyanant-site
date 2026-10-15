@@ -171,3 +171,30 @@ footer { display: flex; justify-content: space-between; padding: 28px clamp(20px
     transform: none !important;
   }
 }
+
+.education-line { margin: 17px 0 0; color: var(--ink); font-size: 14px; line-height: 1.6; }
+.availability { margin-top: 14px; }
+.availability-details { margin: 3px 0 0 16px; font-size: 13px; color: var(--muted); line-height: 1.6; }
+.resume-variants { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 20px; font-size: 13px; line-height: 1.7; }
+.resume-variants span { color: var(--muted); }
+.resume-variants a { text-decoration: underline; text-underline-offset: 4px; }
+.profile-links { flex-wrap: wrap; align-items: center; margin-top: 16px; }
+.profile-links button { border: 0; background: transparent; padding: 0; color: inherit; font-size: inherit; text-decoration: underline; text-underline-offset: 4px; }
+.evidence-link { margin-left: 20px; }
+.card-content > p.project-proof { padding: 11px 13px; border-left: 2px solid var(--accent); background: #eaf0e9; font-size: 13px; line-height: 1.6; }
+.contact-links > div { flex-wrap: wrap; }
+.contact p.contact-format { margin-top: 18px; font-size: 13px; }
+@media screen and (prefers-reduced-motion: no-preference) {
+  .education-line { animation-delay: 100ms; }
+  .availability-details { animation-delay: 140ms; }
+  .resume-variants { animation-delay: 180ms; }
+}
+@media (max-width: 760px) {
+  .evidence-link { margin-left: 0; display: block; width: fit-content; }
+  .resume-variants { gap: 8px 16px; }
+}
+@media print {
+  .resume-variants { display: none; }
+  .education-line, .availability-details { font-size: 9pt; margin-top: 5px; }
+  .card-content > p.project-proof { font-size: 8pt; padding: 4px 8px; background: transparent; }
+}
