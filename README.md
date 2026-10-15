@@ -38,17 +38,27 @@ and omits screenshots, navigation, and buttons. Disable browser headers and foot
 for a clean export. Project details live in `app/page.tsx`; layout and print styles
 live in `app/globals.css`.
 
-The downloadable PDFs are committed in `public/resume/`. To regenerate them:
+The downloadable PDFs are committed in `public/resume/`: software engineering,
+computer vision, security engineering, and IoT/robotics software. The generator
+also supports a three-page master with 12 selected projects; its internship entry
+currently contains only the employer and two-month duration supplied by the owner.
+Confirm the remaining experience details before publishing the master. To regenerate:
 
 ```bash
 python -m pip install reportlab pypdf
 python scripts/generate_resumes.py
 ```
 
+Use `--only Anant_Goel_IoT_Robotics_Intern_Resume.pdf` (or another filename)
+to regenerate one document. The source distinguishes virtual sensor simulations,
+device-facing server software, and experimental research from deployed hardware
+or measured real-world accuracy. Internship facts come from the owner; project
+claims are based on the linked repositories.
+
 Update the verified education, availability, skills, and project copy in that
 script when details change. Résumé dates and personal details should match
-the homepage. The generator checks that each PDF fits one page and contains
-the required education and identity text.
+the homepage. The generator checks that focused resumes fit one page, the master
+fits three pages, and required education, project, and experience text is present.
 
 ## Search metadata
 
