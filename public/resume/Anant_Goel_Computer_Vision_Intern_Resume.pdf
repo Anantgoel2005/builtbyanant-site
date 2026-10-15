@@ -2,7 +2,7 @@
 %“Œ‹ž ReportLab Generated PDF document (opensource)
 1 0 obj
 <<
-/F1 2 0 R /F2 3 0 R
+/F1 2 0 R /F2 3 0 R /F3 4 0 R
 >>
 endobj
 2 0 obj
@@ -12,61 +12,66 @@ endobj
 endobj
 3 0 obj
 <<
-/BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font
+/BaseFont /Times-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font
 >>
 endobj
 4 0 obj
 <<
-/A <<
-/S /URI /Type /Action /URI (mailto:anantgoel2005@gmail.com)
->> /Border [ 0 0 0 ] /Rect [ 50 732.0898 159.683 742.8898 ] /Subtype /Link /Type /Annot
+/BaseFont /Times-Roman /Encoding /WinAnsiEncoding /Name /F3 /Subtype /Type1 /Type /Font
 >>
 endobj
 5 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (https://builtbyanant.site)
->> /Border [ 0 0 0 ] /Rect [ 50 714.0898 115.034 724.8898 ] /Subtype /Link /Type /Annot
+/S /URI /Type /Action /URI (mailto:anantgoel2005@gmail.com)
+>> /Border [ 0 0 0 ] /Rect [ 228.5678 742.8898 339.1578 754.8898 ] /Subtype /Link /Type /Annot
 >>
 endobj
 6 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (https://github.com/Anantgoel2005)
->> /Border [ 0 0 0 ] /Rect [ 122.378 714.0898 229.442 724.8898 ] /Subtype /Link /Type /Annot
+/S /URI /Type /Action /URI (https://builtbyanant.site)
+>> /Border [ 0 0 0 ] /Rect [ 151.3328 727.8898 217.7228 739.8898 ] /Subtype /Link /Type /Annot
 >>
 endobj
 7 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (https://www.linkedin.com/in/ag25goel/)
->> /Border [ 0 0 0 ] /Rect [ 236.786 714.0898 335.831 724.8898 ] /Subtype /Link /Type /Annot
+/S /URI /Type /Action /URI (https://github.com/Anantgoel2005)
+>> /Border [ 0 0 0 ] /Rect [ 224.7228 727.8898 334.4428 739.8898 ] /Subtype /Link /Type /Annot
 >>
 endobj
 8 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (https://github.com/Anantgoel2005/PathWise)
->> /Border [ 0 0 0 ] /Rect [ 50 423.2898 97.2605 435.8898 ] /Subtype /Link /Type /Annot
+/S /URI /Type /Action /URI (https://www.linkedin.com/in/ag25goel/)
+>> /Border [ 0 0 0 ] /Rect [ 341.4428 727.8898 443.9428 739.8898 ] /Subtype /Link /Type /Annot
 >>
 endobj
 9 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (https://github.com/Anantgoel2005/traffic_monitoring_system)
->> /Border [ 0 0 0 ] /Rect [ 50 333.2898 142.778 345.8898 ] /Subtype /Link /Type /Annot
+/S /URI /Type /Action /URI (https://github.com/Anantgoel2005/PathWise)
+>> /Border [ 0 0 0 ] /Rect [ 50 483.6898 95.221 496.8898 ] /Subtype /Link /Type /Annot
 >>
 endobj
 10 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (https://github.com/Anantgoel2005/deception-orchestrator)
->> /Border [ 0 0 0 ] /Rect [ 50 271.2898 167.2745 283.8898 ] /Subtype /Link /Type /Annot
+/S /URI /Type /Action /URI (https://github.com/Anantgoel2005/traffic_monitoring_system)
+>> /Border [ 0 0 0 ] /Rect [ 50 402.6898 140.123 415.8898 ] /Subtype /Link /Type /Annot
 >>
 endobj
 11 0 obj
 <<
-/Annots [ 4 0 R 5 0 R 6 0 R 7 0 R 8 0 R 9 0 R 10 0 R ] /Contents 15 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 14 0 R /Resources <<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Anantgoel2005/deception-orchestrator)
+>> /Border [ 0 0 0 ] /Rect [ 50 347.6898 161.496 360.8898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+12 0 obj
+<<
+/Annots [ 5 0 R 6 0 R 7 0 R 8 0 R 9 0 R 10 0 R 11 0 R ] /Contents 16 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 15 0 R /Resources <<
 /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
 >> /Rotate 0 
   /Trans <<
@@ -74,57 +79,58 @@ endobj
 >> /Type /Page
 >>
 endobj
-12 0 obj
-<<
-/PageMode /UseNone /Pages 14 0 R /Type /Catalog
->>
-endobj
 13 0 obj
 <<
-/Author (Anant Goel) /CreationDate (D:20261015211255+05'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20261015211255+05'00') /Producer (ReportLab PDF Library - \(opensource\)) 
-  /Subject (\(unspecified\)) /Title (Anant Goel - Computer Vision / Applied AI Intern) /Trapped /False
+/PageMode /UseNone /Pages 15 0 R /Type /Catalog
 >>
 endobj
 14 0 obj
 <<
-/Count 1 /Kids [ 11 0 R ] /Type /Pages
+/Author (Anant Goel) /CreationDate (D:20261015213810+05'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20261015213810+05'00') /Producer (ReportLab PDF Library - \(opensource\)) 
+  /Subject (\(unspecified\)) /Title (Anant Goel - Computer Vision / Applied AI Intern) /Trapped /False
 >>
 endobj
 15 0 obj
 <<
-/Filter [ /ASCII85Decode /FlateDecode ] /Length 1855
+/Count 1 /Kids [ 12 0 R ] /Type /Pages
+>>
+endobj
+16 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 1824
 >>
 stream
-Gau0DhfIL2&:X(TYtlD."ruCMr+KGt&CPSF+dY1!l(a=D-o%#`P"@db5Q4\=&421e1NYC9:b8l`htQO+7m1h]a0WPF!oPnePB.6s+/13/JJ1:*JjK%f^CR@m*V5riZrZWWc(OD!i&!N5ZYTPpX\Po'Eb<UDWt,^BnCnL+TQZgD7'd`C&B7\-$'X;ZId7N#mNMGUI,O_+DUSnqmFM.),j1#U'I5!(FqiPEle4RjiVHmE6G)VFSPHYH2;nYXD0LT/#EItk""_^e]QPf=mptZL@)AG(qqq^V9#"knXS"2mQP"T_%n853m7%Lk7LVpp!jC@!4)a&_(")V(i1Z._(Q0irLs6rA>bl<?]duf9imo'c0Z>DRAL`.Q/!\`V]V^NpaR#@gDkdClMtKcJ`-:&,YM"Ns`1^XKUY"E/-51GuR>^5K/!p5,Rk2\u1Top:`2%V*gJ3+Y=MiMl(A$#sjQQu=q4TfP<CNt;4;tah[hfjolgL+tK$HI-lZL?pfY)1U]d@('`Ub\57sH,LG0X$L1^Z\tCd`G63D1e'V=U(N)Q&,K$FPW*U['_Z;MZTX6-gFQFN.8!,Yr&<Ur`(CY!:mEQjLiY`Xl[XlK]?o)`qP-EMZA8/I?j@bB9I'i=fp<_Mj<Te$>o>mqSfd&/-pn#U3c+D$!@r8J1-M:D*k)]SE6bPB&.8o\F9XKr+^u*5,&ue-9QprE_<#?c#=sh=ZMthW\u9N%15(]*DLofYhtEl2UBb";c?0:D103q9kq8$QK#3F!L9T-Xq0-4FKro%i@E?N#K&V87=u+]/'8,p\e%_V$q,uN#BW4<=REh37I$/6uj!%SS)]_1M(U8'?,OoKKWJ4j'5cV5GLE!e6qtTBE8co`"aa:V-5=!n;)]W)YCdN%f<pOgjC'$7Q6TPRg5b`$e15.3m5X(WDB_m^+/b[UihKNN87=P1L6E5GJ'aJ08II2eA`A!qfd2X4s#^LE*?ojRD.S5oMnI-@E3.-9Ru(Uq,lp"9'AH8c\^(0K^*O$#h=(-A5Cpi=-Z@cO-aB&7%uBS%,oW^Dh_m+l]=(CF"J.C8^3L>8bn)+YPA<Ie2.X6>I/u'7QBmu\).Cb5sH9X_:A5RDgYR<,_>um4_Qn8/oKgBC?2ORT)[!ag)=d8Zf\"UA(*$5,["li.b/.of9\5oo>Xi!R\^igXT>?>ec5_"8DK;34_tl^4JJU%XgP]MF&$^%mTlIYI[1PXLO8T`=TObVP<In%\G:-9Xt*btf6kCQ=u<0KP33i]F5=W7/G"Oob2J6#par/oQ0TI6,,"^06SU&E03+f]5HlH\$r!'?D$so(O^+P^8MsO_QAjF8@4KBN.9fOa\:C+q,Uft>Ybo_XZ\@&N6KB$i)IAO7;P>fLHDO+TPLts^=_84^&5$pgd/k_*\i9[c&8pFZIFLB^nkmHV.0="n*[$_(K?Z&nJK8s""aU)optfcm[cm.;1bER$<O%s<9/JTKOtLlnC#!2@N>(5!jjpq6'T%dN-cOO9O'CdtIVCS@SK6#MeVLX2NZ-MtDD?Su\#+`\H*C"[$,l9k8V%LU/(89K@e$<fA!3)HE2K+a@1m0K#l-/K`8aXY\+O$=pJL6N\,%^OT!;;E^f]#FmO'8Ja?uu_/Do"/Xfn$rPqN#ICObK9@C'QT?%M_`Haj)hCrm;hP+=rkR5X1oQ,m0uPVuH1#r@e."D+!rP6J%>'c@Jm6f@A)W'TsX/-%o8j:<]S(e3,0h#Z#`U(WuWje)O]L*j6pAUfR+nX1,6ouus^GKKU;8:Ku(ZDP^'>U^:6f++*8etcG?WXS8p]j,%nLY1!W,)V(g=+ef)I@6>>m+$P?Y/VNR8do=5S,%Pa\/GIQ]<-)Jn3<Dnk=k~>endstream
+Gatm<>uT`R'Rf^WgnuTEMo6kP^mUNX`*%7[*/V!ZO%n%fCZs&eGLTU:O5J\4!t%R=bHfW*qW$@P:Z$4t+$BJlmE^"\E#QR_\IX,hd2`(mgP0AM_s$=!U[S!F5E-.9k]T>&f/r6U/:?F0(NOMKoDS?F3-g5$"V>oj\\Ki[pH5q6lh9grPX)!nftWL(lXW!S"/9"UrWMEG#i,@TcK8Q=G4VB^]EQ#f@qjW@4/%#\XZ%>X<L.DMi<N:TE&`T$QDKNecl^)[iu>]uoj[2m<:/T]Wa.<-\*&L:C'?up\--KuWM4nIiIpNNTP<>0iEqKX@At3(Pss,O?O/2kA:s3eWdA^hh8?`bhefcQ>$SD(V0Z0EGckMEXq?p0$`99dbWn>Z57_1<=N^CZ9c1>A)*]I++>cGE&\Yud2^5G*S,ZM8^8Lm5nMRJP-g/D3F>UPpO(!?UERDQ#=`%u!Wg:9rHK9hME5_;"$"*r(PL'cM@E3af@CciHdlFB2jbN_4ff3W7UeX44KXE)'0r$k.TQHc%Y$isB>bNoMVK"KU^6C5.$0WZ=aqp"8.N)RnOWqh11]81],ud.L15aR[eZ@bIA5k%UZrp[-'&VZ\-H%0@1J'E@[@gtt[4Icn^Da'u,Xa4sK#e(ec(:)1;C$P3AgrF\S<jeHGha*gDR7iqY8d@;2a"\ioHVT88*)77+$LIBnfUmc2@&45@LO&5^Ek>aE-?/%e:g?!afNneW>j60$&n=bobS#Y1E%3u01^Wt1?]cic1Bf6=u75sI5r2_[=9-Ta3tPC0C5:CPIrX/Mju>sqRj_u<M>b22^'Y+3fPH/oH?uH://9I'uJnjq:Pp,aXA8/BYr*;Gg_8o6IX#GO1g>/+N,(*s"0)dFqg"i-WCU#SWe:?@HU$m4IT!SVBj_e\>52>]i>:\"hf+HMM+M8!m6T3c1^-W'8Th$EQGOi=dCmE)QUhYVZ4qSd#UnL^sAIH[%9FarVe;HcYsGDPh=a(eiPn(,'s&<;jC:!#d`+9ppHFcNm^N+*hoPQf$WNmAiNQ9!',"59H=C05nZ[CFgj79GX+KKB-)%gQRp-K^Xk"&r%'-R%o)#Kg.[hk5p,Xck]#_u<BSh2R]WN`KbKA$h0<(mCBocpbYtMORRoT>1R#:En=t(X%"a"=O,fs>5SU6VBWA"QoXQuIV&@=<'?LA\0\7/*EE[0[@4oZZ.LSFVH[l>h85Ni^@0Bp[Te!Ag\]?YZ+IjW)E1q7^li8)[9G9d=9JaSY6fL'q[L7nR_,Up^re?C!=5J9s-)trK7g_pGN%%pI(4KW7[QGSIhWf7K'=kTIJ!S-+i4QEr.n3I6ma7DaIU1+Dk%@K="'T*#NLB1?,\CC1[Y;TG!f,O-#/,Ik[+qcomZ"/LkLa^/W&gH7^J4T:n?0j'4c)'YfTN-9.TJX>AL7JSTo)G#P;:sK3J++K&a"0CGrJO<_jc8BGcs]>eZQGf]IL$>qP8/!aEWP*JOBlK/$?;C4dfUIa`S*9bC@M'f&`SL]n5"mJa:)h]r*:d_U]$^cCLe.-)HoWV+jrd_GnT&6$;:P.mV=caRF_LbhQHaSJVUT!cY7s0pp.B;04tV/eIt0._5=RrYg0*1g)AG>47S*[]m>*>SD]qh4<UY"`e[g84C9FJ5W1>Q@'*m<!fhP;AjX/c-er$r89<R;GjO>))GN6HA#GSlg/kKBcZQe\\u`d2e6g!8PR.L)Un(TiHqaLrNih-<8JK_QfjRuMiYN+"KhMYB5aJW9I[C2$]W#.a5Il$`D!S5ll!?;ZHO_ur.fh2k:(hd=1';,CYBT;>S:`XMmb()i@CepRYgd_D3ElAJ$'Bq`;~>endstream
 endobj
 xref
-0 16
+0 17
 0000000000 65535 f 
 0000000061 00000 n 
-0000000102 00000 n 
-0000000209 00000 n 
-0000000321 00000 n 
-0000000496 00000 n 
-0000000666 00000 n 
-0000000848 00000 n 
-0000001035 00000 n 
-0000001221 00000 n 
-0000001424 00000 n 
-0000001626 00000 n 
-0000001887 00000 n 
-0000001957 00000 n 
-0000002270 00000 n 
-0000002331 00000 n 
+0000000112 00000 n 
+0000000219 00000 n 
+0000000327 00000 n 
+0000000436 00000 n 
+0000000618 00000 n 
+0000000795 00000 n 
+0000000979 00000 n 
+0000001168 00000 n 
+0000001353 00000 n 
+0000001557 00000 n 
+0000001758 00000 n 
+0000002020 00000 n 
+0000002090 00000 n 
+0000002403 00000 n 
+0000002464 00000 n 
 trailer
 <<
 /ID 
-[<096a67c7b3b143fed86318a4b6bc0fce><096a67c7b3b143fed86318a4b6bc0fce>]
+[<7cca538d5efead8eaa5c4176d9c0c665><7cca538d5efead8eaa5c4176d9c0c665>]
 % ReportLab generated PDF document -- digest (opensource)
 
-/Info 13 0 R
-/Root 12 0 R
-/Size 16
+/Info 14 0 R
+/Root 13 0 R
+/Size 17
 >>
 startxref
-4278
+4380
 %%EOF

@@ -10,24 +10,37 @@ from xml.sax.saxutils import escape
 
 from pypdf import PdfReader
 from reportlab.lib import colors
-from reportlab.lib.enums import TA_LEFT
+from reportlab.lib.enums import TA_CENTER
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, KeepTogether, PageBreak
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "public" / "resume"
-UPDATED = "15 October 2026"
-INK = colors.HexColor("#14211e")
-ACCENT = colors.HexColor("#0e6b5b")
+INK = colors.black
+
+
+class SectionHeading(Paragraph):
+    """A standard resume heading with a thin black section divider."""
+
+    def draw(self):
+        super().draw()
+        self.canv.saveState()
+        self.canv.setStrokeColor(INK)
+        self.canv.setLineWidth(0.5)
+        self.canv.line(0, -2, self.width, -2)
+        self.canv.restoreState()
+
+
 styles = {
-    "name": ParagraphStyle("name", fontName="Helvetica-Bold", fontSize=24, leading=28, textColor=INK, spaceAfter=5),
-    "role": ParagraphStyle("role", fontName="Helvetica-Bold", fontSize=11, leading=15, textColor=ACCENT, spaceAfter=9),
-    "body": ParagraphStyle("body", fontName="Helvetica", fontSize=10, leading=14, textColor=INK, spaceAfter=6),
-    "contact": ParagraphStyle("contact", fontName="Helvetica", fontSize=9, leading=13, textColor=INK, spaceAfter=5),
-    "section": ParagraphStyle("section", fontName="Helvetica-Bold", fontSize=11, leading=15, textColor=ACCENT, spaceBefore=13, spaceAfter=7),
-    "project": ParagraphStyle("project", fontName="Helvetica-Bold", fontSize=10.5, leading=14, textColor=INK, spaceAfter=5),
-    "bullet": ParagraphStyle("bullet", fontName="Helvetica", fontSize=10, leading=14, leftIndent=11, firstLineIndent=-9, textColor=INK, spaceAfter=4),
+    "name": ParagraphStyle("name", fontName="Times-Bold", fontSize=20, leading=24, textColor=INK, alignment=TA_CENTER, spaceAfter=4),
+    "role": ParagraphStyle("role", fontName="Times-Roman", fontSize=11, leading=13, textColor=INK, alignment=TA_CENTER, spaceAfter=4),
+    "body": ParagraphStyle("body", fontName="Times-Roman", fontSize=11, leading=13, textColor=INK, spaceAfter=4),
+    "contact": ParagraphStyle("contact", fontName="Times-Roman", fontSize=10, leading=12, textColor=INK, spaceAfter=3),
+    "header_contact": ParagraphStyle("header_contact", fontName="Times-Roman", fontSize=10, leading=12, textColor=INK, alignment=TA_CENTER, spaceAfter=3),
+    "section": ParagraphStyle("section", fontName="Times-Bold", fontSize=11, leading=14, textColor=INK, spaceBefore=10, spaceAfter=8, keepWithNext=True),
+    "project": ParagraphStyle("project", fontName="Times-Bold", fontSize=11, leading=13, textColor=INK, spaceAfter=3, keepWithNext=True),
+    "bullet": ParagraphStyle("bullet", fontName="Times-Roman", fontSize=11, leading=13, leftIndent=10, firstLineIndent=-8, textColor=INK, spaceAfter=3),
 }
 
 PROJECTS = {
@@ -97,15 +110,15 @@ VARIANTS = [
 ]
 
 def paragraph(text, style="body"):
-    return Paragraph(text, styles[style])
+    return SectionHeading(text, styles[style]) if style == "section" else Paragraph(text, styles[style])
 
 def footer(canvas, doc):
     canvas.saveState()
-    canvas.setFont("Helvetica", 8)
-    canvas.setFillColor(colors.HexColor("#59615b"))
-    canvas.drawString(44, 27, f"Updated {UPDATED}")
-    canvas.drawCentredString(A4[0] / 2, 27, str(doc.page))
-    canvas.drawRightString(A4[0] - 44, 27, "builtbyanant.site")
+    if "Master" in doc.title:
+        canvas.setFont("Times-Roman", 9)
+        canvas.setFillColor(INK)
+        canvas.drawString(44, 27, "Anant Goel")
+        canvas.drawRightString(A4[0] - 44, 27, f"Page {doc.page}")
     canvas.restoreState()
 
 
@@ -123,7 +136,7 @@ def project_block(key):
 def experience_block():
     return KeepTogether([
         paragraph("WORK EXPERIENCE", "section"),
-        paragraph("<b>Intern | Bodycast Innovators Pvt. Ltd.</b> | May - July 2025"),
+        paragraph("<b>Intern | Bodycast Innovators Pvt. Ltd.</b> | May 2025 - Jul 2025"),
         paragraph("Dwarka, Delhi, India | On-site", "contact"),
         paragraph("- Assisted across multiple projects while developing practical familiarity with power electronics, IoT, and microcontrollers.", "bullet"),
         paragraph("- Gained exposure to PCB design, consumer electronics, and electrical engineering through the internship.", "bullet"),
@@ -137,9 +150,9 @@ def generate_master():
                             title="Anant Goel - Master Resume", author="Anant Goel")
     flow = [paragraph("ANANT GOEL", "name"),
             paragraph("Software Engineering | Applied AI | IoT Systems | Security", "role"),
-            paragraph('<link href="mailto:anantgoel2005@gmail.com">anantgoel2005@gmail.com</link> | India', "contact"),
-            paragraph('<link href="https://builtbyanant.site">builtbyanant.site</link> | <link href="https://github.com/Anantgoel2005">github.com/Anantgoel2005</link> | <link href="https://www.linkedin.com/in/ag25goel/">linkedin.com/in/ag25goel</link>', "contact"),
-            paragraph("PROFILE", "section"),
+            paragraph('<link href="mailto:anantgoel2005@gmail.com">anantgoel2005@gmail.com</link> | India', "header_contact"),
+            paragraph('<link href="https://builtbyanant.site">builtbyanant.site</link> | <link href="https://github.com/Anantgoel2005">github.com/Anantgoel2005</link> | <link href="https://www.linkedin.com/in/ag25goel/">linkedin.com/in/ag25goel</link>', "header_contact"),
+            paragraph("PROFESSIONAL SUMMARY", "section"),
             paragraph("Final-year Computer Science student building complete software workflows across computer vision, security, connected-device services, and offline products. Experience includes a two-month industry internship and project work spanning APIs, data pipelines, explainable decision logic, dashboards, and reproducible validation."),
             paragraph("EDUCATION", "section"),
             paragraph("<b>BML Munjal University</b> | B.Tech in Computer Science | Expected May 2027"),
@@ -155,20 +168,20 @@ def generate_master():
     ]
     for label, value in skills:
         flow.append(paragraph(f"<b>{escape(label)}:</b> {escape(value)}"))
-    flow.append(paragraph("FEATURED PROJECTS", "section"))
+    flow.append(paragraph("PROJECTS", "section"))
     flow.extend(project_block(key) for key in ("pathwise", "insidi"))
     flow.extend([PageBreak(), paragraph("ANANT GOEL | MASTER RESUME", "role"),
-                 paragraph("COMPUTER VISION, IoT & APPLIED RESEARCH", "section")])
+                 paragraph("PROJECTS (CONTINUED)", "section")])
     flow.extend(project_block(key) for key in ("warehouse", "speednet", "traffic", "quantum", "pneumonia"))
     flow.extend([PageBreak(), paragraph("ANANT GOEL | MASTER RESUME", "role"),
-                 paragraph("SECURITY, PRODUCTS & DATA APPLICATIONS", "section")])
+                 paragraph("PROJECTS (CONTINUED)", "section")])
     flow.extend(project_block(key) for key in ("deception", "pentest", "mouseion", "internwise", "parking"))
-    flow.extend([paragraph("INTERNSHIP PREFERENCES", "section"),
+    flow.extend([paragraph("ADDITIONAL INFORMATION", "section"),
                  paragraph("On-site / hybrid roles in India. Flexible duration; start date to be discussed.")])
     doc.build(flow, onFirstPage=footer, onLaterPages=footer)
     reader = PdfReader(path)
     text = "\n".join(page.extract_text() for page in reader.pages)
-    for required in ("Bodycast Innovators", "May - July 2025", "microcontrollers", "May 2027", *(project[0] for project in PROJECTS.values())):
+    for required in ("Bodycast Innovators", "May 2025 - Jul 2025", "microcontrollers", "May 2027", *(project[0] for project in PROJECTS.values())):
         if required not in text:
             raise ValueError(f"Missing {required} in master resume")
     if len(reader.pages) != 3:
@@ -184,18 +197,17 @@ def generate(selected=None):
         doc = SimpleDocTemplate(str(path), pagesize=A4, rightMargin=44, leftMargin=44, topMargin=36, bottomMargin=40,
                                 title=f"Anant Goel - {role}", author="Anant Goel")
         flow = [paragraph("ANANT GOEL", "name"), paragraph(escape(role), "role"),
-                paragraph('<link href="mailto:anantgoel2005@gmail.com">anantgoel2005@gmail.com</link> | India', "contact"),
-                paragraph('<link href="https://builtbyanant.site">builtbyanant.site</link> | <link href="https://github.com/Anantgoel2005">github.com/Anantgoel2005</link> | <link href="https://www.linkedin.com/in/ag25goel/">linkedin.com/in/ag25goel</link>', "contact"),
-                paragraph("SUMMARY", "section"), paragraph(escape(summary)),
-                paragraph("EDUCATION & AVAILABILITY", "section"),
+                paragraph('<link href="mailto:anantgoel2005@gmail.com">anantgoel2005@gmail.com</link> | India', "header_contact"),
+                paragraph('<link href="https://builtbyanant.site">builtbyanant.site</link> | <link href="https://github.com/Anantgoel2005">github.com/Anantgoel2005</link> | <link href="https://www.linkedin.com/in/ag25goel/">linkedin.com/in/ag25goel</link>', "header_contact"),
+                paragraph("PROFESSIONAL SUMMARY", "section"), paragraph(escape(summary)),
+                paragraph("EDUCATION", "section"),
                 paragraph("<b>BML Munjal University</b> | B.Tech in Computer Science | Expected May 2027"),
-                paragraph("Seeking on-site / hybrid internships in India. Flexible duration; start date to be discussed."),
                 paragraph("TECHNICAL SKILLS", "section")]
         for label, value in skills:
             flow.append(paragraph(f"<b>{escape(label)}:</b> {escape(value)}"))
         if filename == "Anant_Goel_IoT_Robotics_Intern_Resume.pdf":
             flow.append(experience_block())
-        flow.append(paragraph("SELECTED PROJECTS", "section"))
+        flow.append(paragraph("PROJECTS", "section"))
         for key in keys:
             title, repo, stack, bullets = PROJECTS[key]
             if filename == "Anant_Goel_IoT_Robotics_Intern_Resume.pdf":
@@ -213,10 +225,12 @@ def generate(selected=None):
                         "Validated core risk logic with a reproducible 180-frame synthetic scenario, covering 540 actor samples.",
                     ],
                 }[key]
-            block = [paragraph(f'<link href="https://github.com/Anantgoel2005/{repo}">{escape(title)}</link> <font name="Helvetica" size="9">| {escape(stack)}</font>', "project")]
+            block = [paragraph(f'<link href="https://github.com/Anantgoel2005/{repo}">{escape(title)}</link> <font name="Times-Roman" size="10">| {escape(stack)}</font>', "project")]
             block.extend(paragraph("- " + escape(bullet), "bullet") for bullet in bullets)
             block.append(Spacer(1, 7))
             flow.append(KeepTogether(block))
+        flow.extend([paragraph("ADDITIONAL INFORMATION", "section"),
+                     paragraph("Seeking on-site / hybrid internships in India. Flexible duration; start date to be discussed.")])
         doc.build(flow, onFirstPage=footer, onLaterPages=footer)
         reader = PdfReader(path)
         if len(reader.pages) != 1:
@@ -226,7 +240,7 @@ def generate(selected=None):
             if required not in text:
                 raise ValueError(f"Missing {required} in {filename}")
         if filename == "Anant_Goel_IoT_Robotics_Intern_Resume.pdf":
-            for required in ("Bodycast Innovators", "May - July 2025", "microcontrollers", "PCB design"):
+            for required in ("Bodycast Innovators", "May 2025 - Jul 2025", "microcontrollers", "PCB design"):
                 if required not in text:
                     raise ValueError(f"Missing internship fact {required} in {filename}")
         print(f"{filename}: one page; {len(reader.pages[0].get('/Annots', []))} clickable links")

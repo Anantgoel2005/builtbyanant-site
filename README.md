@@ -48,6 +48,11 @@ python -m pip install reportlab pypdf
 python scripts/generate_resumes.py
 ```
 
+All versions share a conventional single-column resume layout with Times-style
+type, black text, standard section headings, thin divider rules, and selectable
+text. Contacts and source links remain clickable. Focused versions use one page;
+the master uses three pages with name and page-number footers.
+
 Use `--only Anant_Goel_IoT_Robotics_Intern_Resume.pdf` (or another filename)
 to regenerate one document. The source distinguishes virtual sensor simulations,
 device-facing server software, and experimental research from deployed hardware
